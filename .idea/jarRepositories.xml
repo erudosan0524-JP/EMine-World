@@ -12,9 +12,24 @@
       <option name="url" value="https://repo.codemc.org/repository/maven-public/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="onarandombox" />
+      <option name="name" value="onarandombox" />
+      <option name="url" value="http://repo.onarandombox.com/content/groups/public" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="spigot-repo" />
       <option name="name" value="spigot-repo" />
       <option name="url" value="https://hub.spigotmc.org/nexus/content/repositories/snapshots/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="doodleproject-repo" />
+      <option name="name" value="doodleproject-repo" />
+      <option name="url" value="http://doodleproject.sourceforge.net/maven2/release" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="Multiverse-Core" />
+      <option name="name" value="Multiverse-Core" />
+      <option name="url" value="http://repo.onarandombox.com/content/repositories/multiverse/" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="central" />

@@ -1,5 +1,6 @@
 package com.github.jp.erudosan.emw;
 
+import com.github.jp.erudosan.emw.task.SchedulerTask;
 import com.github.jp.erudosan.emw.utils.Config;
 import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -22,6 +23,9 @@ public class Main extends JavaPlugin {
         getLogger().info("プラグインを起動しました");
 
         myConfig = new Config(getInstance());
+
+        SchedulerTask task = new SchedulerTask(getInstance());
+        task.runTaskTimer(getInstance(),0L,20 * 60);
 
         getServer().getPluginCommand("emw").setExecutor(new CommandManager());
     }

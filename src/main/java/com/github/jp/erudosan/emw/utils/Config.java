@@ -84,7 +84,7 @@ public class Config {
 
     public int getMonth(int index) {
         if(Objects.nonNull(this.calendarList.get(index))) {
-            return this.calendarList.get(index).get(Calendar.MONTH);
+            return this.calendarList.get(index).get(Calendar.MONTH) + 1;
         } else {
             return 0;
         }
