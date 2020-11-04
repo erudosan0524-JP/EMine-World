@@ -12,5 +12,7 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         getLogger().info("プラグインを起動しました");
+
+        getServer().getPluginCommand("emw").setExecutor(new CommandManager());
     }
 }
