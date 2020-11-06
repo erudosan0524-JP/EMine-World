@@ -16,6 +16,7 @@ import java.io.File;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
+import java.util.Random;
 
 public class SchedulerTask extends BukkitRunnable {
 
@@ -40,6 +41,7 @@ public class SchedulerTask extends BukkitRunnable {
             && plugin.getMyConfig().getHour(i) == hour
             && plugin.getMyConfig().getMinute(i) == minute) {
 
+                plugin.createWorld();
 
             }
         }

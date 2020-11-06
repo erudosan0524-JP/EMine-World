@@ -1,5 +1,6 @@
 package com.github.jp.erudosan.emw.utils;
 
+import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.Plugin;
 
@@ -16,6 +17,10 @@ public class Config {
     private List<String> date;
     private List<Calendar> calendarList;
 
+    private List<String> worlds;
+    //world_name,Environment
+    private HashMap<String, World.Environment> worldMap = new HashMap<>();
+
     public Config(Plugin plugin) {
         this.plugin = plugin;
 
@@ -31,6 +36,9 @@ public class Config {
 
         date = config.getStringList("date");
         setCalendars();
+
+        worlds = config.getStringList("worlds");
+        setWorlds();
     }
 
     private void reload() {
@@ -97,4 +105,39 @@ public class Config {
             return 0;
         }
     }
+
+    private void setWorlds() {
+        for(String s : worlds) {
+            World.Environment env;
+            String[] args = s.split(",",0);
+
+            if(args.length <= 0) {
+                return;
+            }
+
+            switch (args[1].toLowerCase()) {
+                case "normal":
+                    env = World.Environment.NORMAL;
+                    break;
+                case "nether":
+                    env = World.Environment.NETHER;
+                    break;
+                case "end":
+                    env = World.Environment.THE_END;
+                    break;
+                default:
+                    env = World.Environment.NORMAL;
+                    break;
+            }
+
+            worldMap.put(args[0],env);
+        }
+    }
+
+    public HashMap<String, World.Environment> getWorlds() {
+        return this.worldMap;
+    }
+
+
+
 }
