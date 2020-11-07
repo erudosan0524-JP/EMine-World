@@ -28,8 +28,8 @@
             <url>http://repo.onarandombox.com/content/groups/public</url>
         </repository>
         <repository>
-            <id>enginehub-maven</id>
-            <url>http://maven.enginehub.org/repo/</url>
+            <id>world-edit</id>
+            <url>http://maven.sk89q.com/repo/</url>
         </repository>
     </repositories>
     <dependencies>
@@ -65,7 +65,15 @@
         <dependency>
             <groupId>com.sk89q.worldedit</groupId>
             <artifactId>worldedit-bukkit</artifactId>
-            <version>6.0-SNAPSHOT</version>
+            <version>7.0.0-SNAPSHOT</version>
+            <type>jar</type>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.bukkit</groupId>
+                    <artifactId>bukkit</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
     <build>

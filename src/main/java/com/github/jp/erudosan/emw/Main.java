@@ -79,9 +79,9 @@ public class Main extends JavaPlugin {
         for (String name : this.getMyConfig().getWorlds().keySet()) {
             if (getMvCore().getMVWorldManager().loadWorld(name)) {
                 this.getMvCore().getMVWorldManager().regenWorld(name, true, true, rand.toString());
+            } else {
+                this.getMvCore().getMVWorldManager().addWorld(name, this.getMyConfig().getWorlds().get(name), rand.toString(), WorldType.NORMAL, false, null);
             }
-
-            this.getMvCore().getMVWorldManager().addWorld(name, this.getMyConfig().getWorlds().get(name), rand.toString(), WorldType.NORMAL, false, null);
 
             createGate(name);
         }
