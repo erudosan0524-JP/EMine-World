@@ -6,3 +6,5 @@ worlds:
   - "shigen,normal"
   - "shigen_nether,nether"
   - "shigen_end,end"
+
+gate_block: ""

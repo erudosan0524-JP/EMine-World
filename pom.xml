@@ -6,7 +6,7 @@
 
     <groupId>com.github.jp.erudosan.emw</groupId>
     <artifactId>EMine-World</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -26,6 +26,10 @@
         <repository>
             <id>onarandombox</id>
             <url>http://repo.onarandombox.com/content/groups/public</url>
+        </repository>
+        <repository>
+            <id>enginehub-maven</id>
+            <url>http://maven.enginehub.org/repo/</url>
         </repository>
     </repositories>
     <dependencies>
@@ -52,6 +56,16 @@
             <groupId>com.onarandombox.multiversecore</groupId>
             <artifactId>Multiverse-Core</artifactId>
             <version>4.2.3-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.onarandombox.multiverseportals</groupId>
+            <artifactId>Multiverse-Portals</artifactId>
+            <version>4.2.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sk89q.worldedit</groupId>
+            <artifactId>worldedit-bukkit</artifactId>
+            <version>6.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
     <build>

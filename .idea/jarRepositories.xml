@@ -27,6 +27,11 @@
       <option name="url" value="http://doodleproject.sourceforge.net/maven2/release" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="enginehub-maven" />
+      <option name="name" value="enginehub-maven" />
+      <option name="url" value="http://maven.enginehub.org/repo/" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="Multiverse-Core" />
       <option name="name" value="Multiverse-Core" />
       <option name="url" value="http://repo.onarandombox.com/content/repositories/multiverse/" />

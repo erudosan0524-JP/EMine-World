@@ -1,5 +1,7 @@
 package com.github.jp.erudosan.emw.utils;
 
+import lombok.Getter;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.Plugin;
@@ -21,6 +23,8 @@ public class Config {
     //world_name,Environment
     private HashMap<String, World.Environment> worldMap = new HashMap<>();
 
+    private String gateBlock;
+
     public Config(Plugin plugin) {
         this.plugin = plugin;
 
@@ -41,6 +45,8 @@ public class Config {
 
         worlds = config.getStringList("worlds");
         setWorlds();
+
+        gateBlock = config.getString("gate_block");
     }
 
     public void reload() {
@@ -138,6 +144,10 @@ public class Config {
 
     public HashMap<String, World.Environment> getWorlds() {
         return this.worldMap;
+    }
+
+    public Material getGateBlock() {
+        return Material.getMaterial(this.gateBlock);
     }
 
 

@@ -1,5 +1,5 @@
 name: "EMine-World"
-version: "0.0.1-SNAPSHOT"
+version: "0.0.2-SNAPSHOT"
 main: "com.github.jp.erudosan.emw.Main"
 author: 'erudo'
 api-version: 1.13
