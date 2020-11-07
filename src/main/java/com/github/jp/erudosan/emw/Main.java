@@ -14,9 +14,12 @@ import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.util.Vector;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Main extends JavaPlugin {
@@ -99,40 +102,61 @@ public class Main extends JavaPlugin {
         Location loc = mvWorld.getSpawnLocation();
 
         Location min = new Location(world, loc.getBlockX() + 5, loc.getBlockY(), loc.getBlockZ());
-        Location max = new Location(world, loc.getBlockX() + 3, loc.getBlockY() + 4, loc.getBlockZ());
+        Location max = new Location(world, loc.getBlockX() + 4, loc.getBlockY() + 5, loc.getBlockZ());
 
         org.bukkit.util.Vector minVec = new org.bukkit.util.Vector(min.getX(), min.getY(), min.getZ());
         org.bukkit.util.Vector maxVec = new org.bukkit.util.Vector(max.getX(), max.getY(), max.getZ());
 
-        createGateFrame(this.getMyConfig().getGateBlock(), min, max);
+        createGateFrame(this.getMyConfig().getGateBlock(),min, max);
+
+        try {
+            Thread.sleep(20 * 10L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         PortalLocation portalLocation = new PortalLocation(minVec, maxVec, mvWorld);
 
         mvPortals.getPortalManager().addPortal(mvWorld, worldName, null, portalLocation);
 
         Bukkit.getServer().broadcastMessage("ゲートの作成が完了しました。");
+
     }
 
-    public void createGateFrame(Material material, Location min, Location max) {
-        for (int x = min.getBlockX(); x < max.getBlockX(); x++) {
-            for (int y = min.getBlockY(); y < max.getBlockY(); y++) {
-                for (int z = min.getBlockZ(); z < max.getBlockZ(); z++) {
+    public void createGateFrame(Material material,Location min, Location max) {
 
-                    Location loc = new Location(min.getWorld(), x, y, z);
-                    Block block = loc.getBlock();
+        System.out.println("World:" + min.getWorld().getName());
+        System.out.println("Material: " + material);
 
-                    if (y > min.getBlockY() || y < max.getBlockY()) {
-                        if (x != min.getBlockX() || x != max.getBlockX()) {
-                            block.setType(Material.AIR);
-                            continue;
-                        }
-                    }
+        System.out.println("minX: " + min.getBlockX());
+        System.out.println("minY: " + min.getBlockY());
+        System.out.println("minZ: " + min.getBlockZ());
 
-                    block.setType(material);
+        System.out.println("maxX: " + max.getBlockX());
+        System.out.println("maxY: " + max.getBlockY());
+        System.out.println("maxZ: " + max.getBlockZ());
 
+        for(Location loc : getGateFrame(min,max)) {
+            loc.getBlock().setType(material);
+        }
+
+    }
+
+
+    private List<Location> getGateFrame(Location min, Location max) {
+        List<Location> frameloc = new ArrayList<>();
+
+        int xDiff = Math.abs(min.getBlockX() - max.getBlockX());
+        int yDiff = Math.abs(min.getBlockY() - max.getBlockY());
+
+        for(int x=0; x < xDiff; x++) {
+            for(int y=0; y < yDiff; y++) {
+                if(min.getBlockX()+x == min.getBlockX() || min.getBlockX()+x == max.getBlockX() || min.getBlockY()+y == min.getBlockY() || min.getBlockY()+y == max.getBlockY()) {
+                    frameloc.add(new Location(min.getWorld(),min.getBlockX()+x, min.getBlockY()+y, min.getBlockZ()));
                 }
             }
         }
 
+        return frameloc;
     }
 }

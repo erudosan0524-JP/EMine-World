@@ -1,6 +1,8 @@
 package com.github.jp.erudosan.emw;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.WorldType;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -51,6 +53,9 @@ public class CommandManager implements CommandExecutor {
             plugin.getMyConfig().reload();
 
             player.sendMessage("Reload Complete! ");
+            return true;
+        } else if(args[0].equalsIgnoreCase("create")) {
+            plugin.createGateFrame(Material.GOLD_BLOCK,player.getLocation(),new Location(player.getWorld(),player.getLocation().getX() + 4,player.getLocation().getY() + 5,player.getLocation().getZ()));
             return true;
         }
 
