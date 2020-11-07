@@ -119,6 +119,12 @@ public class Main extends JavaPlugin {
 
         mvPortals.getPortalManager().addPortal(mvWorld, worldName, null, portalLocation);
 
+        for(String s : this.getMyConfig().getWorlds().keySet()) {
+            mvPortals.getPortalManager().getPortal(worldName).setProperty("dest","p:T" + worldName + "F" + this.getMyConfig().getMainWorld());
+        }
+
+
+
         Bukkit.getServer().broadcastMessage("ゲートの作成が完了しました。");
 
     }

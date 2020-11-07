@@ -23,6 +23,8 @@ public class Config {
     //world_name,Environment
     private HashMap<String, World.Environment> worldMap = new HashMap<>();
 
+    @Getter
+    private String mainWorld;
     private String gateBlock;
     private String baseBlock;
 
@@ -47,6 +49,7 @@ public class Config {
         worlds = config.getStringList("worlds");
         setWorlds();
 
+        mainWorld = config.getString("main_world");
         gateBlock = config.getString("gate_block");
         baseBlock = config.getString("base_block");
     }

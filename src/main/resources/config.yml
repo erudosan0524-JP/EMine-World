@@ -7,5 +7,6 @@ worlds:
   - "shigen_nether,nether"
   - "shigen_end,end"
 
+main_world: "rule"
 gate_block: "IRON_BLOCK"
 base_block: "BEDROCK"
