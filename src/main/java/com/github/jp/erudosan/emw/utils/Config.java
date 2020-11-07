@@ -43,7 +43,7 @@ public class Config {
         setWorlds();
     }
 
-    private void reload() {
+    public void reload() {
         plugin.reloadConfig();
         plugin.saveConfig();
     }

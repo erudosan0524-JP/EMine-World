@@ -47,6 +47,11 @@ public class CommandManager implements CommandExecutor {
             }
 
             return true;
+        } else if (args[0].equalsIgnoreCase("reload")) {
+            plugin.getMyConfig().reload();
+
+            player.sendMessage("Reload Complete! ");
+            return true;
         }
 
         return false;
