@@ -55,7 +55,7 @@ public class CommandManager implements CommandExecutor {
             player.sendMessage("Reload Complete! ");
             return true;
         } else if(args[0].equalsIgnoreCase("create")) {
-            plugin.createGateFrame(Material.GOLD_BLOCK,player.getLocation(),new Location(player.getWorld(),player.getLocation().getX() + 4,player.getLocation().getY() + 5,player.getLocation().getZ()));
+            plugin.createGateFrame(Material.GOLD_BLOCK,Material.BEDROCK,player.getLocation(),new Location(player.getWorld(),player.getLocation().getX() + 3,player.getLocation().getY() + 4,player.getLocation().getZ()));
             return true;
         }
 

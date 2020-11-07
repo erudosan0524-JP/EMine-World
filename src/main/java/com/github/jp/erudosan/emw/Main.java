@@ -102,12 +102,12 @@ public class Main extends JavaPlugin {
         Location loc = mvWorld.getSpawnLocation();
 
         Location min = new Location(world, loc.getBlockX() + 5, loc.getBlockY(), loc.getBlockZ());
-        Location max = new Location(world, loc.getBlockX() + 4, loc.getBlockY() + 5, loc.getBlockZ());
+        Location max = new Location(world, loc.getBlockX() + 8, loc.getBlockY() + 4, loc.getBlockZ());
 
         org.bukkit.util.Vector minVec = new org.bukkit.util.Vector(min.getX(), min.getY(), min.getZ());
         org.bukkit.util.Vector maxVec = new org.bukkit.util.Vector(max.getX(), max.getY(), max.getZ());
 
-        createGateFrame(this.getMyConfig().getGateBlock(),min, max);
+        createGateFrame(this.getMyConfig().getGateBlock(),this.getMyConfig().getBaseBlock(),min, max);
 
         try {
             Thread.sleep(20 * 10L);
@@ -123,21 +123,25 @@ public class Main extends JavaPlugin {
 
     }
 
-    public void createGateFrame(Material material,Location min, Location max) {
-
-        System.out.println("World:" + min.getWorld().getName());
-        System.out.println("Material: " + material);
-
-        System.out.println("minX: " + min.getBlockX());
-        System.out.println("minY: " + min.getBlockY());
-        System.out.println("minZ: " + min.getBlockZ());
-
-        System.out.println("maxX: " + max.getBlockX());
-        System.out.println("maxY: " + max.getBlockY());
-        System.out.println("maxZ: " + max.getBlockZ());
+    public void createGateFrame(Material material,Material base, Location min, Location max) {
 
         for(Location loc : getGateFrame(min,max)) {
             loc.getBlock().setType(material);
+        }
+
+        int x1 = min.getBlockX() - 4;
+        int y = min.getBlockY() - 1;
+        int z1 = min.getBlockZ() -5;
+
+        Location loc1 = new Location(min.getWorld(), x1, y, z1);
+
+        int x2 = min.getBlockX() + 4;
+        int z2 = min.getBlockZ() + 5;
+
+        Location loc2 = new Location(min.getWorld(), x2, y, z2);
+
+        for(Location loc : getBase(loc1,loc2)) {
+            loc.getBlock().setType(base);
         }
 
     }
@@ -149,14 +153,35 @@ public class Main extends JavaPlugin {
         int xDiff = Math.abs(min.getBlockX() - max.getBlockX());
         int yDiff = Math.abs(min.getBlockY() - max.getBlockY());
 
-        for(int x=0; x < xDiff; x++) {
-            for(int y=0; y < yDiff; y++) {
-                if(min.getBlockX()+x == min.getBlockX() || min.getBlockX()+x == max.getBlockX() || min.getBlockY()+y == min.getBlockY() || min.getBlockY()+y == max.getBlockY()) {
+        for(int x=0; x <= xDiff; x++) {
+            for(int y=0; y <= yDiff; y++) {
+                if(min.getBlockX()+x == min.getBlockX() || min.getBlockY()+y == min.getBlockY()) {
                     frameloc.add(new Location(min.getWorld(),min.getBlockX()+x, min.getBlockY()+y, min.getBlockZ()));
+                }
+
+                if(max.getBlockX()-x == max.getBlockX() || max.getBlockY()-y == max.getBlockY()) {
+                    frameloc.add(new Location(max.getWorld(),max.getBlockX()-x, max.getBlockY()-y, max.getBlockZ()));
                 }
             }
         }
 
         return frameloc;
+    }
+
+    private List<Location> getBase(Location min, Location max) {
+        List<Location> base = new ArrayList<>();
+
+        int xDiff = Math.abs(min.getBlockX() - max.getBlockX());
+        int zDiff = Math.abs(min.getBlockZ() - max.getBlockZ());
+
+        for(int x=0; x <= xDiff; x++) {
+            for(int z=0; z <= zDiff; z++) {
+                Location loc = new Location(min.getWorld(),min.getBlockX()+x,min.getBlockY(),min.getBlockZ()+z);
+
+                base.add(loc);
+            }
+        }
+
+        return base;
     }
 }

@@ -24,6 +24,7 @@ public class Config {
     private HashMap<String, World.Environment> worldMap = new HashMap<>();
 
     private String gateBlock;
+    private String baseBlock;
 
     public Config(Plugin plugin) {
         this.plugin = plugin;
@@ -47,6 +48,7 @@ public class Config {
         setWorlds();
 
         gateBlock = config.getString("gate_block");
+        baseBlock = config.getString("base_block");
     }
 
     public void reload() {
@@ -149,6 +151,11 @@ public class Config {
     public Material getGateBlock() {
         return Material.getMaterial(this.gateBlock);
     }
+
+    public Material getBaseBlock() {
+        return Material.getMaterial(this.baseBlock);
+    }
+
 
 
 
