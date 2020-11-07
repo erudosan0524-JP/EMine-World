@@ -1,0 +1,9 @@
+name: "EMine-World"
+version: "0.0.1-SNAPSHOT"
+main: "com.github.jp.erudosan.emw.Main"
+author: 'erudo'
+api-version: 1.13
+depend: [Multiverse-Core,Multiverse-Portals,WorldEdit]
+commands:
+    emw:
+      description: EMine-World command

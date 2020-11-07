@@ -1,0 +1,4 @@
+com\github\jp\erudosan\emw\CommandManager.class
+com\github\jp\erudosan\emw\task\SchedulerTask.class
+com\github\jp\erudosan\emw\Main.class
+com\github\jp\erudosan\emw\utils\Config.class

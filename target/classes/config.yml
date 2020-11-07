@@ -1,0 +1,8 @@
+#Schedule
+date:
+  - "11-04,20:00"
+
+worlds:
+  - "shigen,normal"
+  - "shigen_nether,nether"
+  - "shigen_end,end"

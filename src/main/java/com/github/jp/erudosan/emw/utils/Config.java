@@ -15,7 +15,7 @@ public class Config {
 
     //設定一覧
     private List<String> date;
-    private List<Calendar> calendarList;
+    private List<Calendar> calendarList = new ArrayList<>();
 
     private List<String> worlds;
     //world_name,Environment
@@ -33,6 +33,8 @@ public class Config {
         if(Objects.nonNull(config)) {
             reload();
         }
+
+        config = plugin.getConfig();
 
         date = config.getStringList("date");
         setCalendars();
